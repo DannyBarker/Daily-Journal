@@ -1,0 +1,22 @@
+{
+    "journal": [
+        {
+            "date": "6/12/19",
+            "concept": "JS",
+            "long_form": "Learned a lot of stuff. My head hurts.",
+            "mood": "eh"
+        },
+        {
+            "date": "6/13/19",
+            "concept": "Welcome To Nash",
+            "long_form": "Worked in groups, today.",
+            "mood": "good"
+        },
+        {
+            "date": "6/14/19",
+            "concept": "Presented Group Proj",
+            "long_form": "We kicked booty in our presentation.",
+            "mood": "amazing"
+        }
+    ]
+}

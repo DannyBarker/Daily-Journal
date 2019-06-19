@@ -7,11 +7,10 @@ API.getJournalEntries().then(renderJournalEntries)
 
 conceptInvalid()
 formInvalid()
-
-let recordBtn = document.querySelector("#record_entry");
-    recordBtn.addEventListener('click', addToDB)
-
 long_formAlert()
 conceptAlert()
+
+addToDB()
+
 
 

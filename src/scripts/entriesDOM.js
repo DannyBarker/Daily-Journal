@@ -33,10 +33,11 @@ const makeJournalEntryComponent = (journalEntry) => {
     document.querySelector("#go-here").innerHTML +=
     `
     <div>
-        <h1>${journalEntry.date}</h1>
-        <h2>${journalEntry.concept}</h2>
-        <p>${journalEntry.long_form}</p>
-        <aside><em>${journalEntry.mood}</em></aside>
+        <h1>Journal Entry: ${journalEntry.id}</h1>
+        <h4>Date: ${journalEntry.date}</h4>
+        <h5>Concept(s) Learned: ${journalEntry.concept}</h5>
+        <p>Entry: ${journalEntry.long_form}</p>
+        <aside>Mood: <em>${journalEntry.mood}</em></aside>
     </div>
     `
 }

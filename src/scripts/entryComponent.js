@@ -1,5 +1,5 @@
 import{API} from "./data.js"
-import{renderJournalEntries, makeJournalObj} from "./entriesDOM.js"
+import{makeJournalObj, postData} from "./entriesDOM.js"
 
 const addToDB = () => {
         let dateInput = document.querySelector("#journalDate")
@@ -13,9 +13,8 @@ const addToDB = () => {
                 let conceptContain = conceptCharacters.match(x)
                 let long_formContain = long_formCharacters.match(x)
                 if (conceptContain === null && long_formContain === null) {
-                        document.querySelector("#go-here").innerHTML = ''
                         let newObj = makeJournalObj()
-                        API.addJournalEntry(newObj).then( data => API.getJournalEntries().then(renderJournalEntries))
+                        API.addJournalEntry(newObj).then( data => postData())
 
                 } 
                

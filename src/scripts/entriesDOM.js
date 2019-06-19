@@ -1,8 +1,15 @@
+import { API } from "./data.js";
+
 const renderJournalEntries = (journal) => {
+    let entries = document.querySelector("#go-here")
     journal.forEach(entry => {
-        makeJournalEntryComponent(entry)
+        entries.appendChild(makeJournalEntryComponent(entry))
     });
 }   
+const postData = () => {
+    document.querySelector("#go-here").innerHTML = ''
+    API.getJournalEntries().then(renderJournalEntries)
+}
 
 const createJournalObj = ( arr) => {
     let newObj = {
@@ -29,17 +36,27 @@ const makeJournalObj = () => {
 }
 
 const makeJournalEntryComponent = (journalEntry) => {
-    // Create your own HTML structure for a journal entry
-    document.querySelector("#go-here").innerHTML +=
-    `
-    <div>
+    let el = document.createElement("div")
+    let secEl = document.createElement("section")
+    let deleteBtn = document.createElement("button")
+    deleteBtn.innerHTML = `Delete`
+    deleteBtn.setAttribute('id', `${journalEntry.id}`)
+    deleteBtn.addEventListener('click', () => {
+        let id = event.target.id
+        API.deleteJournalEntry(id).then( data => postData())
+    })
+    secEl.innerHTML =  `
+   
         <h1>Journal Entry: ${journalEntry.id}</h1>
         <h4>Date: ${journalEntry.date}</h4>
         <h5>Concept(s) Learned: ${journalEntry.concept}</h5>
         <p>Entry: ${journalEntry.long_form}</p>
         <aside>Mood: <em>${journalEntry.mood}</em></aside>
-    </div>
     `
+    el.appendChild(secEl)
+    el.appendChild(deleteBtn)
+return el 
+    
 }
 
-export {renderJournalEntries, makeJournalObj}
+export {renderJournalEntries, makeJournalObj, postData}

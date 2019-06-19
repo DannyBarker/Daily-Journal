@@ -3,7 +3,7 @@ const API = {
         return fetch("http://localhost:8088/journal")
             .then(response => response.json())
     },
-    addJournalEntry: ( journalObj) => {
+    addJournalEntry: journalObj => {
         return fetch("http://localhost:8088/journal", {
             method: "POST",
             headers: {
@@ -12,6 +12,15 @@ const API = {
             body: JSON.stringify(journalObj)
         })
         .then( data => data.json())
+    },
+    deleteJournalEntry: id => {
+        return fetch(`http://localhost:8088/journal/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then( newData => newData.json)
     }
 }
 

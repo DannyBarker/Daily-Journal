@@ -20,20 +20,6 @@
       "concept": "Presented Group Proj",
       "long_form": "We kicked booty in our presentation.",
       "mood": "Alright"
-    },
-    {
-      "date": "2019-06-12",
-      "concept": "test (",
-      "long_form": "did this work))",
-      "mood": "Good",
-      "id": 4
-    },
-    {
-      "date": "2019-06-25",
-      "concept": "regex",
-      "long_form": "took a lot, of , wokr, do, these, work?.!",
-      "mood": "Great",
-      "id": 5
     }
   ]
 }

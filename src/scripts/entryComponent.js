@@ -9,7 +9,7 @@ const addToDB = () => {
         if (dateInput.value && conceptInput.value && long_formInput.value && moodInput.value) {
                let conceptCharacters = conceptInput.value
                let long_formCharacters = long_formInput.value
-                let x = /[^a-zA-Z0-9(){}:;\s]/
+                let x = /[^a-zA-Z0-9(){}:;\s.?!,"']/
                 let conceptContain = conceptCharacters.match(x)
                 let long_formContain = long_formCharacters.match(x)
 

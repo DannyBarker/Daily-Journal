@@ -16,8 +16,6 @@ const createJournalObj = ( arr) => {
     newObj.long_form = arr[2]
     newObj.mood = arr[3]
     return newObj
-
-    
 }
 
 const makeJournalObj = () => {
@@ -27,13 +25,12 @@ const makeJournalObj = () => {
     let moodInput = document.querySelector("#mood")
     let objArr = [dateInput.value, conceptInput.value, long_formInput.value, moodInput.value]
     let journalObj = createJournalObj(objArr)
-    console.log(journalObj);
+    return journalObj
 }
-
 
 const makeJournalEntryComponent = (journalEntry) => {
     // Create your own HTML structure for a journal entry
-    document.querySelector(".go-here").innerHTML +=
+    document.querySelector("#go-here").innerHTML +=
     `
     <div>
         <h1>${journalEntry.date}</h1>

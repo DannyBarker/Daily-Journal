@@ -1,5 +1,21 @@
 import{API} from "./data.js"
-import{makeJournalObj, postData} from "./entriesDOM.js"
+import{makeJournalObj, postData, renderJournalEntries} from "./entriesDOM.js"
+
+const filterMood = () => {
+        let mood = document.querySelector("#moodFilter");
+        let pickMood = document.querySelector("#findMood");
+        pickMood.addEventListener('click', () => {
+                if (mood.value !== '') {
+                        API.getJournalEntries().then( entries => {
+                                let containMood = entries.filter( moods => moods.mood.includes(`${mood.value}`))
+                                document.querySelector("#go-here").innerHTML = ''
+                                renderJournalEntries(containMood)
+                        })
+                }
+        })
+
+
+}
 
 const addToDB = () => {
         let recordBtn = document.querySelector("#record_entry");
@@ -28,4 +44,4 @@ const addToDB = () => {
                  
         })
 }   
-export {addToDB}
+export {addToDB, filterMood}

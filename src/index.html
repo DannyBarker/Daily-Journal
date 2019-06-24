@@ -37,8 +37,23 @@
                 <option value="Meh">Meh</option>
             </select>
         </fieldset>
+
     </form>
-    <button type="buttom" id="record_entry">Record Entry</button>
+    <button type="button" id="record_entry">Record Entry</button>
+   <form> 
+    <fieldset>
+        <Legend>Filter Journal Entries By Mood</Legend>
+        <select name="mood" id="moodFilter">
+            <option value="">Pick Mood</option>
+            <option value="Great">Great</option>
+            <option value="Good">Good</option>
+            <option value="Alright">Alright</option>
+            <option value="Questionable">Questionable</option>
+            <option value="Meh">Meh</option>
+        </select>
+    </fieldset>
+    </form>
+    <button type="button" id="findMood">Show Mood</button>
     
     <article id="go-here"></article>
     <script type="module" src="scripts/scripts.js"></script>

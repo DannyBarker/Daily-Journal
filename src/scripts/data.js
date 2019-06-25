@@ -21,6 +21,16 @@ const API = {
             }
         })
         .then( newData => newData.json)
+    },
+    editJournalEntry: (obj) => {
+        return fetch(`http://localhost:8088/journal/${obj.id}`, {
+            method: "PUT",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(obj)
+        })
+        .then( update => update.json())
     }
 }
 

@@ -1,4 +1,5 @@
 import { API } from "./data.js";
+import { deleteBtnEvent, editBtnEvent } from "./eventListeners.js"
 
 const renderJournalEntries = (journal) => {
     let entries = document.querySelector("#go-here")
@@ -38,13 +39,8 @@ const makeJournalObj = () => {
 const makeJournalEntryComponent = (journalEntry) => {
     let el = document.createElement("div")
     let secEl = document.createElement("section")
-    let deleteBtn = document.createElement("button")
-    deleteBtn.innerHTML = `Delete`
-    deleteBtn.setAttribute('id', `${journalEntry.id}`)
-    deleteBtn.addEventListener('click', () => {
-        let id = event.target.id
-        API.deleteJournalEntry(id).then( data => postData())
-    })
+    let deleteBtn = deleteBtnEvent(journalEntry)
+    let editBtn = editBtnEvent(journalEntry)
     secEl.innerHTML =  `
    
         <h1>Journal Entry: ${journalEntry.id}</h1>
@@ -52,9 +48,11 @@ const makeJournalEntryComponent = (journalEntry) => {
         <h5>Concept(s) Learned: ${journalEntry.concept}</h5>
         <p>Entry: ${journalEntry.long_form}</p>
         <aside>Mood: <em>${journalEntry.mood}</em></aside>
+        <div id="edit-${journalEntry.id}"></div>
     `
     el.appendChild(secEl)
     el.appendChild(deleteBtn)
+    el.appendChild(editBtn)
 return el 
     
 }

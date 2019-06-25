@@ -1,7 +1,8 @@
 import{API} from "./data.js"
 import{renderJournalEntries,} from "./entriesDOM.js"
-import {addToDB, filterMood} from "./entryComponent.js"
+import {addToDB} from "./entryComponent.js"
 import {long_formAlert, conceptAlert, conceptInvalid, formInvalid} from "./alerts.js"
+import {filterMood} from "./eventListeners.js"
 
 API.getJournalEntries().then(renderJournalEntries)
 

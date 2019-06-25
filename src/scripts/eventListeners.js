@@ -53,35 +53,34 @@ const filterMood = () => {
         }
     })
 }
-const createEditSec = id => {
+const createEditSec = obj => {
     let div = document.createElement('div');
-    div.setAttribute('id', `edit-${id}`);
-    let editBtn = submitEdit(id)
+    div.setAttribute('id', `edit-${obj.id}`);
+    let editBtn = submitEdit(obj.id)
     div.innerHTML = `<form>
     <fieldset>
         <label for="journalDate">Date of Entry</label>
-        <input type="date" name="journalDate" id="edit-journalDate">
+        <input type="date" name="journalDate" id="edit-journalDate" value="${obj.date}">
     </fieldset>
     
     <fieldset>
         <label for="journalConcepts">Journal Concepts</label>
-        <input type="text" name="journalConcepts" id="edit-journalConcepts" maxlength="20" placeholder="Concepts Learned">
+        <input type="text" name="journalConcepts" id="edit-journalConcepts" maxlength="20" value="${obj.concept}">
     </fieldset>
 
     <fieldset>
         <label for="journalEntry">Journal Entry</label>
-        <textarea type="text" name="journalEntry" id="edit-journalEntry" maxlength="250" placeholder="Journal entry goes here."></textarea>
+        <textarea type="text" name="journalEntry" id="edit-journalEntry" maxlength="250">${obj.long_form}</textarea>
     </fieldset>
 
     <fieldset>
         <label for="mood">Mood For the Day</label>
         <select name="mood" id="edit-mood">
-            <option value="">How Do You Feel?</option>
-            <option value="Great">Great</option>
-            <option value="Good">Good</option>
-            <option value="Alright">Alright</option>
-            <option value="Questionable">Questionable</option>
-            <option value="Meh">Meh</option>
+            <option value="Great" ${obj.mood === "Great" ? "selected" : ""}>Great</option>
+            <option value="Good" ${obj.mood === "Good" ? "selected" : ""}>Good</option>
+            <option value="Alright" ${obj.mood === "Alright" ? "selected" : ""}>Alright</option>
+            <option value="Questionable" ${obj.mood === "Questionable" ? "selected" : ""}>Questionable</option>
+            <option value="Meh" ${obj.mood === "Meh" ? "selected" : ""}>Meh</option>
         </select>
     </fieldset>
 
@@ -95,7 +94,8 @@ const editBtnEvent = obj => {
     editBtn.innerHTML = `Edit Journal`
     editBtn.addEventListener('click', () => {
         let id = obj.id
-        let newEl = createEditSec(id)
+        let newEl = createEditSec(obj)
+        console.log(obj);
         document.querySelector(`#edit-${id}`).appendChild(newEl)
     })
     return editBtn

@@ -2,24 +2,24 @@
   "journal": [
     {
       "date": "2019-06-25",
-      "concept": "Test 2",
-      "long_form": "Did it work?",
-      "mood": "Questionable",
+      "concept": "Edit",
+      "long_form": "Hello",
+      "mood": "Great",
       "id": 1
     },
     {
-      "id": 2,
-      "date": "6/13/19",
+      "date": "2019-06-25",
       "concept": "Welcome To Nash",
-      "long_form": "Worked in groups, today.",
-      "mood": "Good"
+      "long_form": "Group Work",
+      "mood": "Great",
+      "id": 2
     },
     {
-      "id": 3,
-      "date": "6/14/19",
+      "date": "2019-06-14",
       "concept": "Presented Group Proj",
-      "long_form": "We kicked booty in our presentation.",
-      "mood": "Alright"
+      "long_form": "Kicked butt",
+      "mood": "Great",
+      "id": 3
     }
   ]
 }

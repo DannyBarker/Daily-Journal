@@ -57,4 +57,4 @@ return el
     
 }
 
-export {renderJournalEntries, makeJournalObj, postData}
+export {renderJournalEntries, makeJournalObj, postData, createJournalObj}

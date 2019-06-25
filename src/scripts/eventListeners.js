@@ -109,10 +109,12 @@ const submitEdit = obj => {
         let conceptEdit = document.querySelector("#edit-journalConcepts")
         let long_formEdit = document.querySelector("#edit-journalEntry")
         let moodEdit = document.querySelector("#edit-mood")
-        let id = event.target.id
-        let arr = [dateEdit.value, conceptEdit.value, long_formEdit, moodEdit]
+        let id = obj
+        let arr = [dateEdit.value, conceptEdit.value, long_formEdit.value, moodEdit.value]
         let editObj = createJournalObj(arr)
         console.log(editObj);
+        API.editJournalEntry(id, editObj).then(data => postData())
+
        
     })
     return subEdit

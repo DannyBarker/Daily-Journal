@@ -22,8 +22,8 @@ const API = {
         })
         .then( newData => newData.json)
     },
-    editJournalEntry: (obj) => {
-        return fetch(`http://localhost:8088/journal/${obj.id}`, {
+    editJournalEntry: (id, obj) => {
+        return fetch(`http://localhost:8088/journal/${id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"

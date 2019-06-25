@@ -1,11 +1,11 @@
 {
   "journal": [
     {
-      "id": 1,
-      "date": "6/12/19",
-      "concept": "JS",
-      "long_form": "Learned a lot of stuff. My head hurts.",
-      "mood": "Meh"
+      "date": "2019-06-25",
+      "concept": "Test 2",
+      "long_form": "Did it work?",
+      "mood": "Questionable",
+      "id": 1
     },
     {
       "id": 2,

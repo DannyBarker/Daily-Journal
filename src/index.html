@@ -15,7 +15,7 @@
             <label for="journalDate">Date of Entry</label>
             <input type="date" name="journalDate" id="journalDate">
         </fieldset>
-        
+
         <fieldset>
             <label for="journalConcepts">Journal Concepts</label>
             <input type="text" name="journalConcepts" id="journalConcepts" maxlength="20" placeholder="Concepts Learned">
@@ -40,21 +40,25 @@
 
     </form>
     <button type="button" id="record_entry">Record Entry</button>
-   <form> 
-    <fieldset>
-        <Legend>Filter Journal Entries By Mood</Legend>
-        <select name="mood" id="moodFilter">
-            <option value="">Pick Mood</option>
-            <option value="Great">Great</option>
-            <option value="Good">Good</option>
-            <option value="Alright">Alright</option>
-            <option value="Questionable">Questionable</option>
-            <option value="Meh">Meh</option>
-        </select>
-    </fieldset>
-    </form>
-    <button type="button" id="findMood">Show Mood</button>
-    
+    <div class ="searchDiv">
+        <fieldset>
+            <Legend>Filter Journal Entries By Mood</Legend>
+            <select name="mood" id="moodFilter">
+                <option value="">Pick Mood</option>
+                <option value="Great">Great</option>
+                <option value="Good">Good</option>
+                <option value="Alright">Alright</option>
+                <option value="Questionable">Questionable</option>
+                <option value="Meh">Meh</option>
+            </select>
+            <button type="button" id="findMood">Show Mood</button>
+        </fieldset>
+        <fieldset>
+            <legend>Search By Journal Entries</legend>
+            <input type="text" id="inputSearch" placeholder="Search for Journal">
+        </fieldset>
+    </div>
+
     <article id="go-here"></article>
     <script type="module" src="scripts/scripts.js"></script>
 </body>

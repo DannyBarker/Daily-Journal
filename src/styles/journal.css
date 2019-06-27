@@ -2,3 +2,7 @@ body {
     display: flex;
     flex-direction: column;
 }
+.searchDiv {
+    display: flex;
+    flex-flow: row wrap;
+}

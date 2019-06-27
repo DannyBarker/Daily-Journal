@@ -8,24 +8,24 @@ const submitEvent = () => {
             let conceptInput = document.querySelector("#journalConcepts")
             let long_formInput = document.querySelector("#journalEntry")
             let moodInput = document.querySelector("#mood")
-            
+
             if (dateInput.value && conceptInput.value && long_formInput.value && moodInput.value) {
                 let conceptCharacters = conceptInput.value
                 let long_formCharacters = long_formInput.value
                 let x = /[^a-zA-Z0-9(){}:;\s.?!,"']/g
                 let conceptContain = conceptCharacters.match(x)
                 let long_formContain = long_formCharacters.match(x)
-                
+
                 if (conceptContain === null && long_formContain === null) {
                         let newObj = makeJournalObj()
                         API.addJournalEntry(newObj).then( data => postData())
-                } 
+                }
     }
             dateInput.value = ""
             conceptInput.value = ""
             long_formInput.value = ""
             moodInput.value = ""
-                 
+
         })
 }
 
@@ -62,7 +62,7 @@ const createEditSec = obj => {
         <label for="journalDate">Date of Entry</label>
         <input type="date" name="journalDate" id="edit-journalDate" value="${obj.date}">
     </fieldset>
-    
+
     <fieldset>
         <label for="journalConcepts">Journal Concepts</label>
         <input type="text" name="journalConcepts" id="edit-journalConcepts" maxlength="20" value="${obj.concept}">
@@ -115,10 +115,34 @@ const submitEdit = obj => {
         console.log(editObj);
         API.editJournalEntry(id, editObj).then(data => postData())
 
-       
+
     })
     return subEdit
 }
 
+const journalSearchEvent = () => {
+    document.querySelector("#inputSearch").addEventListener("keypress", (event) => {
+        if (event.keyCode === 13) {
+            const searchTerm = event.target.value
+            API.getJournalEntries()
+                .then(journalEntry => {
+                    const matchingEntries = []
 
-export {deleteBtnEvent, filterMood, editBtnEvent, submitEvent}
+                    journalEntry.forEach(entry => {
+                        let match = false
+                        for (const prop of Object.values(entry)) {
+                            if (!match && typeof prop === "string" && prop.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())) {
+                                match = true
+                                matchingEntries.push(entry)
+                            }
+                        }
+                    })
+                    event.target.value = ""
+                    document.querySelector("#go-here").innerHTML = ''
+                    renderJournalEntries(matchingEntries)
+                })
+        }
+    })
+}
+
+export {deleteBtnEvent, filterMood, editBtnEvent, submitEvent, journalSearchEvent}

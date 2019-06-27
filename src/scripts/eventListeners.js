@@ -125,22 +125,22 @@ const journalSearchEvent = () => {
         if (event.keyCode === 13) {
             const searchTerm = event.target.value
             API.getJournalEntries()
-                .then(journalEntry => {
-                    const matchingEntries = []
+            .then(journalEntry => {
+                const matchingEntries = []
 
-                    journalEntry.forEach(entry => {
-                        let match = false
-                        for (const prop of Object.values(entry)) {
-                            if (!match && typeof prop === "string" && prop.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())) {
-                                match = true
-                                matchingEntries.push(entry)
-                            }
+                journalEntry.forEach(entry => {
+                    let match = false
+                    for (const prop of Object.values(entry)) {
+                        if (!match && typeof prop === "string" && prop.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())) {
+                            match = true
+                            matchingEntries.push(entry)
                         }
-                    })
-                    event.target.value = ""
-                    document.querySelector("#go-here").innerHTML = ""
-                    renderJournalEntries(matchingEntries)
+                    }
                 })
+                event.target.value = ""
+                document.querySelector("#go-here").innerHTML = ""
+                renderJournalEntries(matchingEntries)
+            })
         }
     })
 }

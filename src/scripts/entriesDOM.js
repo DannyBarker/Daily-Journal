@@ -6,9 +6,9 @@ const renderJournalEntries = (journal) => {
     journal.forEach(entry => {
         entries.appendChild(makeJournalEntryComponent(entry))
     });
-}   
+}
 const postData = () => {
-    document.querySelector("#go-here").innerHTML = ''
+    document.querySelector("#go-here").innerHTML = ""
     API.getJournalEntries().then(renderJournalEntries)
 }
 
@@ -42,7 +42,7 @@ const makeJournalEntryComponent = (journalEntry) => {
     let deleteBtn = deleteBtnEvent(journalEntry)
     let editBtn = editBtnEvent(journalEntry)
     secEl.innerHTML =  `
-   
+
         <h1>Journal Entry: ${journalEntry.id}</h1>
         <h4>Date: ${journalEntry.date}</h4>
         <h5>Concept(s) Learned: ${journalEntry.concept}</h5>
@@ -53,8 +53,8 @@ const makeJournalEntryComponent = (journalEntry) => {
     el.appendChild(secEl)
     el.appendChild(deleteBtn)
     el.appendChild(editBtn)
-return el 
-    
+return el
+
 }
 
 export {renderJournalEntries, makeJournalObj, postData, createJournalObj}

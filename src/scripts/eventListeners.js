@@ -3,7 +3,7 @@ import { postData, renderJournalEntries, makeJournalObj, createJournalObj } from
 
 const submitEvent = () => {
     let recordBtn = document.querySelector("#record_entry");
-        recordBtn.addEventListener('click', () => {
+        recordBtn.addEventListener("click", () => {
             let dateInput = document.querySelector("#journalDate")
             let conceptInput = document.querySelector("#journalConcepts")
             let long_formInput = document.querySelector("#journalEntry")
@@ -31,9 +31,9 @@ const submitEvent = () => {
 
 const deleteBtnEvent = obj => {
     let delBtn = document.createElement("button")
-    delBtn.innerHTML = `Delete`
-    delBtn.setAttribute('id', `${obj.id}`)
-    delBtn.addEventListener('click', () => {
+    delBtn.innerHTML = "Delete"
+    delBtn.setAttribute("id", `${obj.id}`)
+    delBtn.addEventListener("click", () => {
         let id = obj.id
         API.deleteJournalEntry(id).then( data => postData())
     })
@@ -43,19 +43,19 @@ const deleteBtnEvent = obj => {
 const filterMood = () => {
     let mood = document.querySelector("#moodFilter");
     let pickMood = document.querySelector("#findMood");
-    pickMood.addEventListener('click', () => {
-        if (mood.value !== '') {
+    pickMood.addEventListener("click", () => {
+        if (mood.value !== "") {
             API.getJournalEntries().then( entries => {
                 let containMood = entries.filter( moods => moods.mood.includes(`${mood.value}`))
-                document.querySelector("#go-here").innerHTML = ''
+                document.querySelector("#go-here").innerHTML = ""
                 renderJournalEntries(containMood)
             })
         }
     })
 }
 const createEditSec = obj => {
-    let div = document.createElement('div');
-    div.setAttribute('id', `edit-${obj.id}`);
+    let div = document.createElement("div");
+    div.setAttribute("id", `edit-${obj.id}`);
     let editBtn = submitEdit(obj.id)
     div.innerHTML = `<form>
     <fieldset>
@@ -90,9 +90,9 @@ div.appendChild(editBtn)
 return div
 }
 const editBtnEvent = obj => {
-    let editBtn = document.createElement('button')
-    editBtn.innerHTML = `Edit Journal`
-    editBtn.addEventListener('click', () => {
+    let editBtn = document.createElement("button")
+    editBtn.innerHTML = "Edit Journal"
+    editBtn.addEventListener("click", () => {
         let id = obj.id
         let newEl = createEditSec(obj)
         console.log(obj);
@@ -101,10 +101,10 @@ const editBtnEvent = obj => {
     return editBtn
 }
 const submitEdit = obj => {
-    let subEdit = document.createElement('button');
-    subEdit.innerHTML = 'Record Changes'
-    subEdit.setAttribute('id', `submit-${obj}`)
-    subEdit.addEventListener('click', () => {
+    let subEdit = document.createElement("button");
+    subEdit.innerHTML = "Record Changes"
+    subEdit.setAttribute("id", `submit-${obj}`)
+    subEdit.addEventListener("click", () => {
         let dateEdit = document.querySelector("#edit-journalDate")
         let conceptEdit = document.querySelector("#edit-journalConcepts")
         let long_formEdit = document.querySelector("#edit-journalEntry")
@@ -138,7 +138,7 @@ const journalSearchEvent = () => {
                         }
                     })
                     event.target.value = ""
-                    document.querySelector("#go-here").innerHTML = ''
+                    document.querySelector("#go-here").innerHTML = ""
                     renderJournalEntries(matchingEntries)
                 })
         }
